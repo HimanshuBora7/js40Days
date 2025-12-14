@@ -116,3 +116,96 @@ console.log(4 !== "four"); //true
 console.log("**** Logical operators *****");
 
 // && || ??(Nullish Coalescing Operator) !
+
+// op1 && op2
+// if op1 is false then op1 will be returned
+// ** if op1 cant be converted to false then second one will be returned **
+
+console.log(false && false); //false
+console.log(true && false); //false
+console.log(true && true); //true
+console.log(false && true); //false
+
+console.log("cow" && " horse"); // as cow can't be converted to false so op2 will be returned
+
+console.log(4 > 5 && 4 === 6); //false
+
+// || or operator
+// if op1 can be converted to true then op1 is returned
+console.log(true || true); // true
+console.log(true || false); // true
+console.log(false || true); // true
+console.log("cow " || "horse"); //cow
+
+// ?? nullish coalescing operator
+
+// op1 ?? op2 if op1 is null or undefined return op2 other wise return op1
+
+let a1 = null ?? 1; // 1
+console.log(a1);
+let a2 = undefined ?? 3; // 3
+console.log(a2);
+
+const a3 = false ?? "bob"; // false
+console.log(a3);
+const a4 = 0 ?? "bob"; //0
+console.log(a4);
+
+//Conditional (ternary) operator
+console.log("**** Conditional (ternary) operator ****");
+
+// condition ? val1 : val2
+//if condition is true val1 is returned otherwise val2 is returned
+
+let age = 12;
+console.log(age > 16 ? "u can vote " : "u can't vote ");
+
+// bitwise operatiors
+console.log("**** Bitwise operator ****");
+
+//in bitwise operator the operands are treated as 32 bits in 0s and 1s
+
+// bitwise and = &
+//bitwise or = |
+// bitwise xor = ^
+//bitwise not = ~
+// left shift = <<
+//right shift = >>
+
+console.log(15 & 9);
+
+// 9 <<2
+// 9 = 1001 <<2
+//shift left 1000100
+console.log(9 << 2);
+//shit right
+// 1001 >> 2 = 0010
+console.log(9 >> 2);
+
+//relational operator
+// in {keyword} : used to check properties existence in an object (prefer not to use it )
+
+// grouping
+console.log("***grouping*** ");
+
+// () ~ controls the precedence of evaluation of an expression
+
+let p = 1;
+let q = 2;
+let r = 3;
+
+console.log(p + q * r); // 7
+console.log((p + q) * r); // 9
+
+// typeof ~ an operator which return the stirng, it returns the type of operands
+console.log("**** typeof ****");
+console.log(typeof "bob"); // 'string
+console.log(typeof false); // boolean
+
+const number = [1, 2, 3, 4];
+console.log(typeof number); // we can think that this should be returnig array but it returns object as arrays are of object data type in js
+
+console.log(typeof null); // object
+
+// instanceof
+console.log("*** Instance of ***");
