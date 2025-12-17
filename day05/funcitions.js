@@ -252,3 +252,17 @@ console.log(ret_St);
 })(2);
 
 // call stack
+
+// recursion
+
+function fetchWater(count) {
+  console.log("fetching water");
+
+  if (count === 0) {
+    return;
+  }
+
+  fetchWater(count - 1);
+}
+
+fetchWater(5);
