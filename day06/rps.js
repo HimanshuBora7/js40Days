@@ -26,62 +26,66 @@ function rockPaperScissorGame() {
   console.log("gettting started with He rock 🪦,  paper📰 or scissor ✂️ game");
 
   // Taking user input using global method of prompt which is available in every browser
-  let count = 0;
-  do {
-    const userChoicePrompt = prompt(
-      "Please enter your choice rock 🪦, paper📰, scissor✂️ ,Quit "
-    );
-    let userChoice = userChoicePrompt.toLowerCase();
 
-    if (userChoice == "quit") {
-      count = 1;
+  const userChoicePrompt = prompt(
+    "Please enter your choice rock 🪦, paper📰, scissor✂️ ,Quit "
+  );
+  let userChoice = userChoicePrompt.toLowerCase();
+
+  let computerChoice;
+
+  const randomNumber = Math.floor(Math.random() * 3) + 1;
+
+  switch (randomNumber) {
+    case 1:
+      computerChoice = "rock";
       break;
-    }
-    let computerChoice;
+    case 2:
+      computerChoice = "paper";
+      break;
+    case 3:
+      computerChoice = "scissor";
+      break;
+  }
 
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
+  console.log("your choice is", userChoice);
+  console.log("computers choice is", computerChoice);
 
-    switch (randomNumber) {
-      case 1:
-        computerChoice = "rock";
-        break;
-      case 2:
-        computerChoice = "paper";
-        break;
-      case 3:
-        computerChoice = "scissor";
-        break;
-    }
+  let isWin; // from the perspective of user
+  let isTie;
 
-    console.log("your choice is", userChoice);
-    console.log("computers choice is", computerChoice);
+  if (userChoice == computerChoice) {
+    isTie = true;
+  } else if (userChoice == "rock" && computerChoice == "paper") {
+    isWin = false;
+  } else if (userChoice == "rock" && computerChoice == "scissor") {
+    isWin = true;
+  } else if (userChoice == "paper" && computerChoice == "rock") {
+    isWin = true;
+  } else if (userChoice == "paper" && computerChoice == "scissor") {
+    isWin = false;
+  } else if (userChoice == "scissor" && computerChoice == "rock") {
+    isWin = false;
+  } else if (userChoice == "scissor" && computerChoice == "paper") {
+    isWin = true;
+  }
+  if (isWin) {
+    console.log("U won, congratulations ");
+  } else if (isTie) {
+    console.log("tied");
+  } else {
+    console.log("u lost ");
+  }
 
-    let isWin; // from the perspective of user
-    let isTie;
+  const playAgainPrompt = prompt("DO u want to play again ?");
+  const playAgain = playAgainPrompt ? playAgainPrompt.toLowerCase() : "no";
 
-    if (userChoice == computerChoice) {
-      isTie = true;
-    } else if (userChoice == "rock" && computerChoice == "paper") {
-      isWin = false;
-    } else if (userChoice == "rock" && computerChoice == "scissor") {
-      isWin = true;
-    } else if (userChoice == "paper" && computerChoice == "rock") {
-      isWin = true;
-    } else if (userChoice == "paper" && computerChoice == "scissor") {
-      isWin = false;
-    } else if (userChoice == "scissor" && computerChoice == "rock") {
-      isWin = false;
-    } else if (userChoice == "scissor" && computerChoice == "paper") {
-      isWin = true;
-    }
-    if (isWin) {
-      console.log("U won, congratulations ");
-    } else if (isTie) {
-      console.log("tied");
-    } else {
-      console.log("u lost ");
-    }
-  } while (count != 1);
+  //if the user enters yes then call the function again
+  if (playAgain == "yes") {
+    rockPaperScissorGame();
+  } else {
+    console.log("u quitted the game ");
+  }
 }
 //start the gamee
 rockPaperScissorGame();
