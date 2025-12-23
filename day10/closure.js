@@ -77,3 +77,29 @@ let firstAccount = createBankAccount(100);
 firstAccount.deposit(100);
 firstAccount.withdraw(1000);
 firstAccount.checkBalance();
+
+// while using closure check for memory leakage
+// a memory which is not been used by program but it is also not getting collected by garbage collector because it is still refrence by closure function
+// closure should be avoided in memory heavy applications and while working with big data
+
+// usefulness of closure
+// 1. You can keep the variables private without exposing them
+// 2. You can stop varaible pollution. ~ no one can change the variable directly it can only be changed using closure function
+// 3. You can create a function factory. ~ mulitple methods inside a function
+// 4. You can keep the variable alive between multiple calls
+
+function timer() {
+  let secs = 0;
+
+  return function () {
+    secs++;
+    console.log("elapsed seconds ", secs);
+  };
+}
+
+const time = timer();
+
+time(); // 1
+time(); // 2
+time(); // 3
+time(); // 4
