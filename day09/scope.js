@@ -81,5 +81,3 @@ function outer1() {
 
 outer1();
 console.log(count);
-
-//variable shadowing ~ a situation which occurs when
