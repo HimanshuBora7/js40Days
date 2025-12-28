@@ -179,3 +179,113 @@ anotherFruit = fruit; // now the fruit constant is holding reference to the addr
 
 console.log(anotherFruit);
 console.log(anotherFruit == fruit);
+
+// static methods
+
+const target = { p: 1, q: 2 };
+
+const source = { a: 10, b: 20 };
+
+const returnedObj = Object.assign(target, source); // the content of target and source will be combined and will be assigned to returnedObj
+console.log(returnedObj);
+// if there are common keys in both the objects then overriding will happedn, target element will be overrridden by source
+
+const target1 = { p: 10, q: 20 };
+const target2 = { p: 10, r: 30 };
+
+const targetedObj2 = Object.assign(target2, target1); // content of target1 will be overridden
+
+console.log(targetedObj2);
+
+//cloning
+
+const obj11 = { name: "bob" };
+const obj22 = Object.assign({}, obj11); //  this will be shallow cloning means it doesn't gonna clone deeply nested objects
+console.log(obj22);
+console.log(obj22 === obj11); // false
+
+const obj3 = {
+  a: 1,
+  b: { c: 2 },
+};
+
+const obj4 = Object.assign({}, obj3);
+console.log(obj4); // this looks similar to obj3
+
+// but the cope done here is shallow as the nested object is not compied to obj4 its reference is copied to obj4 so we make any changes in the copied obj in obj4 it will change in obj3 also
+
+console.log(obj3.b.c); // 2
+
+// obj4.b.c = 20;
+
+console.log(obj3.b.c); //20
+console.log(obj4.b.c); //20
+
+// this wht the problem with shallow copying is so instead of this we use structuredClone
+
+const obj5 = structuredClone(obj3);
+console.log(obj5.b.c);
+
+// Object.entries() ~ converts an object to array
+
+const myArr = Object.entries(obj3);
+console.log(myArr); // [ [ 'a', 1 ], [ 'b', { c: 2 } ] ]
+console.log(myArr[1]); // [ 'b', { c: 2 } ]
+console.log(myArr[1][0]); // b
+console.log(myArr[1][1]); // { c: 2 }
+
+//fromEntries ~ opposite of entries method -> converting array to object
+
+const myEntries = new Map([
+  ["foo", " bar"],
+  ["bar", 42],
+]);
+
+console.log(myEntries);
+
+const newObj = Object.fromEntries(myEntries);
+console.log(newObj);
+console.log(newObj.foo);
+
+// freeze ~ applies immutability while handling objects
+
+const emp = {
+  salary: 500,
+};
+console.log(emp.salary);
+
+// before freezing
+emp.salary = 10000;
+console.log(emp.salary); //10000
+
+Object.freeze(emp);
+
+emp.salary = 20000; // will not changed
+console.log(emp.salary); // 10000
+
+//after the object is freezed no new properties can be added or deleted from the object
+emp.name = "jon";
+delete emp.salary;
+
+console.log(emp);
+// to check if some object is frozen or not we use isFrozen method it returns true or false
+
+console.log(Object.isFrozen(emp));
+
+// seal method ~ also provides immutability, similar to freeze , no deletion and addition to object is allowed but modification to existing value is allowed
+
+const emp2 = {
+  sal: 2000,
+};
+
+console.log(emp2);
+
+Object.seal(emp2);
+
+emp2.name = "jon";
+emp2.sal = 300;
+console.log(emp2);
+
+// Object.hasOwn(object_name, property ) method ~ to check if an object is containing that property or not , returns boolena value
+
+console.log(Object.hasOwn(emp2, "sal")); // true
