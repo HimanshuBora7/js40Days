@@ -109,9 +109,66 @@ const food = {
   name: "apple",
   color: "yellow",
 
-  getDesc: () => `${this.name} is of ${this.color}`,
-};
+  //   getDesc: () => `${this.name} is of ${this.color}`,
+  // can we make this arrow function work as intended ? yes by playing this arrow function one level down
 
-console.log(food.getDesc());
+  getDesc: function () {
+    return () => `${this.name} is of ${this.color}`;
+  },
+};
+const gettingDesc = food.getDesc();
+console.log(gettingDesc()); // now this works as intended
 
 // it will still give undefine becase the object food is declared in global scope as arrow function doesn't have its own this so it looks for it in its parents scope here its parent is object and the scope of parent is global i.e the object is declared gloabally so the scope is global
+console.log("------------");
+
+// Explicit binding ~ call , apply, bind
+// explicit binding ~ binding this or binding the value of this to something which is unrelated means it belongs to different execution context
+
+// the call method to achieve explicit binding
+
+function greeting() {
+  console.log(`Hello, ${this.name} belongs to ${this.address}`);
+}
+
+const user = {
+  name: "bob",
+  address: "charlie company",
+};
+
+//  now we want to call the greeting function in context of user object
+greeting.call(user);
+
+// another scenerio what if function is defined with parameters
+
+const likes = function (hobby1, hobby2) {
+  console.log(this.name + " likes " + hobby1 + " and " + hobby2);
+};
+
+const person = {
+  name: "delta",
+};
+
+// parameters can be passed after passing the object to which we r binding this
+
+likes.call(person, "football", "cricket");
+
+//in apply method we can pass the parameters in array form instead of passing in comma seprated ways
+
+const hobbyInApplyForm = ["dancing", " singing"];
+
+likes.apply(person, hobbyInApplyForm);
+
+// bind method ~ in case of bind it won't give you the result of the execution of the function on which we are calling the bind rather it will return u a completely new function that you can execute in later point in time to get the desired output
+
+const newHobbies = function (hobby1, hobby2) {
+  console.log(this.name + " likes " + hobby1 + ", " + hobby2);
+};
+
+const officer = {
+  name: "echo",
+};
+
+const newfn = newHobbies.bind(officer, "singing", "dancing");
+
+newfn();
