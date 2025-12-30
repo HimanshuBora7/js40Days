@@ -172,3 +172,16 @@ const officer = {
 const newfn = newHobbies.bind(officer, "singing", "dancing");
 
 newfn();
+
+const cartoon = function (name, animal) {
+  this.name = name;
+  this.animal = animal;
+  this.log = function () {
+    console.log(this.name + " is a " + animal);
+  };
+};
+
+const tomCartoon = new cartoon("tom", "cat");
+tomCartoon.log();
+const jerryCartoon = new cartoon("jerry", "mouse");
+jerryCartoon.log();
