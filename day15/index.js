@@ -45,3 +45,10 @@ const removed = salad.pop();
 console.log(removed);
 
 // shift ~ removes an element from the front of the array
+
+// copy and cloning of array
+
+// slice() - copy
+
+const saladCopy = salad.slice(); // slice method does not mutate the original array
+console.log(saladCopy === salad); // false as their reference is different altough the content is same
