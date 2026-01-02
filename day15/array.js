@@ -130,3 +130,43 @@ console.log(joined);
 [].join; // empty string as there is nothing to join
 
 // fill () ~ helps to fill an array with static value
+// it mutates the source array
+
+const colors = ["red", "blue", "pink"];
+console.log(colors);
+colors.fill("pink", 1, 3); //1 -> the index from where u want to start fill , 3 -> the length not the index till u want it to fill //
+console.log(colors);
+
+//includes () ~ determines presence of element in an array if the element is present in the array it return true if not it returns false
+//it is case sensitive
+let check_col = colors.includes("orange");
+console.log(check_col); //false
+check_col = colors.includes("pink");
+console.log(check_col); //true
+
+//indexof() ~ returns index position of the first occurence of the element passed as an argument
+// returns -1 if passed argument doesn't includes as element in the array
+let ind = colors.indexOf("pink");
+console.log(ind);
+ind = colors.indexOf("orange");
+console.log(ind);
+
+//lastIndexOf () ~ returns the index of last occurence of the passed argument if it exits
+
+// reverse () ~ reverses the position of elements in an array
+//mutates the source array
+const name1 = ["tom", "jerry", "oggy", "shinchan"];
+console.log(name1);
+name1.reverse();
+console.log(name1);
+
+//sort() ~ sorts the array
+// converts the each of elements type to string and then sorts them
+// default sort order is ascending
+//mutates the original array
+const names2 = ["tom", "alex", "bob"];
+console.log(names2);
+names2.sort();
+console.log(names2);
+
+// to sort in decending order we have to write a comparator function
