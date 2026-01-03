@@ -209,3 +209,118 @@ names.splice(0, 0, "john", "calvalry");
 console.log(names);
 
 // splice() mutates the array ,slice () doesn't
+
+// at() ~ helps to retrieve values frm an array by taking both positive and negative value in argument
+// -ve value means the counting will start from behind
+
+const codeName = ["alpha", "bravo", "charlie"];
+console.log(codeName.at(-1));
+
+// flat () ~ taking out elements from nested arrays
+
+const arr11 = [0, 1, 2, 3, [0, 1, 2, 3, [1, 2, 3, 4, 5]]];
+console.log(arr11);
+
+// we can specifiy to what depth the flating should happen by passing argument by default till first nesting the flatting of array happens
+console.log("flattened array ", arr11.flat());
+console.log("flattened array ", arr11.flat(2));
+
+// grouping ~ using method from object to group elements of an array
+{
+  const employee = [
+    { name: " bob", dept: "engineering", salary: 5000 },
+    { name: "Alex", dept: " HR", salary: 3000 },
+    { name: "charlie", dept: "Engineering", salary: 7000 },
+    { name: "delta", dept: "Engineering", salary: 1000 },
+    { name: "Echo", dept: "sales", salary: 1000 },
+  ];
+  const groupByDept = Object.groupBy(employee, ({ dept }) => dept); // pass the array first, then a call back function with key
+  console.log(groupByDept);
+
+  const groupByMoreThan5000 = Object.groupBy(employee, ({ salary }) => {
+    return salary >= 5000 ? "more than 5k" : "less than 5k";
+  });
+  console.log(groupByMoreThan5000);
+}
+
+// toReversed () ~ immutable verion of toReverse()
+const items = [1, 2, 3];
+const reversedArray = items.toReversed();
+
+console.log("reversed array: ", reversedArray);
+console.log("original array: ", items);
+
+// toSorted() ~ immutable verion of toSort();
+// toSplice() ~ immutable version of toSplice
+// it returns a new array in this case
+
+const months = ["jan", "mar", "apr"];
+const modifiedMonth = months.toSpliced(1, 0, "feb");
+console.log(modifiedMonth);
+
+// with() ~ modifies without mutating the source array
+
+// -------------------------------------------------
+
+// Array like ~ it not an array, it is an object with array like behaviour like indexes can be used to access the elements and non negative length property
+
+// {key: value} ~ object
+// [1,2.3] ~ array
+
+const arr_like = { 0: "I", 1: "am", 2: "array-like", length: 3 };
+console.log(typeof arr_like);
+
+console.log(arr_like[2]);
+
+console.log(Array.isArray(arr_like)); // false
+console.log(arr_like instanceof Object); //true
+
+// js uses array like objects at various places
+
+function checkArgs() {
+  console.log(arguments);
+}
+
+checkArgs(1, 45); // [Arguments] { '0': 1, '1': 45 }
+// looks like array but it is an object
+
+// Iteration over array like ~ first conversion of it to array
+
+// applying spread operator on arrayLike
+
+function checkArgsAgain() {
+  console.log("Array like args", arguments);
+  const argArr = [...arguments];
+
+  console.log("Converted array args", argArr);
+
+  argArr.forEach((elem) => console.log(elem));
+}
+checkArgsAgain(1, 45);
+//using Array.from()
+// Array.from() is a static method which takes array like object and returns a true array on which we can apply array methods
+
+// fromAsync() similar to Array.from() but it returns promises
+// html collection is also an array like
+
+const ret = Array.fromAsync({
+  0: Promise.resolve("Script"),
+  1: Promise.resolve("google"),
+  2: Promise.resolve("Apple"),
+
+  length: 3,
+}).then((value) => console.log(value));
+
+console.log(ret);
+
+// of()~ static method which helps us to create new array instance from any number of arguments
+
+const a = new Array(1.2, 3);
+const b = [4, 5, 6];
+
+const c = Array.of(2, true, { name: "alpha" });
+console.log(c);
+
+//-----------------------------------------------------
+
+// Array Iterator mehtods
