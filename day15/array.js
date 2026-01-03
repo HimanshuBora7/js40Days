@@ -324,3 +324,93 @@ console.log(c);
 //-----------------------------------------------------
 
 // Array Iterator mehtods
+
+// filter()
+
+let customers = [
+  {
+    id: 1,
+    f_name: "Abby",
+    l_name: "Thomas",
+    gender: "M",
+    married: true,
+    age: 32,
+    expense: 500,
+    purchased: ["Shampoo", "Toys", "Book"],
+  },
+  {
+    id: 2,
+    f_name: "Jerry",
+    l_name: "Tom",
+    gender: "M",
+    married: true,
+    age: 64,
+    expense: 100,
+    purchased: ["Stick", "Blade"],
+  },
+  {
+    id: 3,
+    f_name: "Dianna",
+    l_name: "Cherry",
+    gender: "F",
+    married: true,
+    age: 22,
+    expense: 1500,
+    purchased: ["Lipstik", "Nail Polish", "Bag", "Book"],
+  },
+  {
+    id: 4,
+    f_name: "Dev",
+    l_name: "Currian",
+    gender: "M",
+    married: true,
+    age: 82,
+    expense: 90,
+    purchased: ["Book"],
+  },
+  {
+    id: 5,
+    f_name: "Maria",
+    l_name: "Gomes",
+    gender: "F",
+    married: false,
+    age: 7,
+    expense: 300,
+    purchased: ["Toys"],
+  },
+];
+
+// filter() - Get 'Senior Citizens' by Filtering out other customers
+
+// syntax for filter method
+/**
+ * const newArray = arr.filter((element,index,array) =>{ do something here on elements and it will ne applied to every element
+ * });
+ * it returns only those elements in array which passes the test condition written inside call back function
+ */
+const seniorCiti = customers.filter((customer) => {
+  return customer.age > 60;
+});
+
+console.log("list of senior citizens", seniorCiti);
+
+// filter method is js array method which takes a call back function like a test function that runs on every element of an array if the test function returns true then that element is part of the returned array otherwise not
+
+// map() ~ takes a transformation function and returns a array after applying that logic on each individual element
+
+//using map () to add full name plus title based on their gender to their data
+
+const customerFullName = customers.map((customer) => {
+  let title = "";
+  if (customer.gender === "M") {
+    title = "Mr.";
+  } else {
+    title = "Mrs.";
+  }
+
+  customer["full_name"] = `${title} ${customer.f_name} ${customer.l_name} `;
+
+  return customer;
+});
+
+const updatesList = console.log(customerFullName);
