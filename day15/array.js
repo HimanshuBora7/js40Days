@@ -170,3 +170,42 @@ names2.sort();
 console.log(names2);
 
 // to sort in decending order we have to write a comparator function
+// that comparator function can be passed as parameter to sort function
+// for decending sort the key is -1
+names2.sort(function (a, b) {
+  return a === b ? 0 : a > b ? -1 : 1;
+});
+
+console.log(names2);
+
+let ages = [2, 199, 100, 10, 4, 7];
+ages.sort();
+console.log("age with default sorting", ages);
+// here we are not getting the desired result as js do comparison after converstion to string so the numerical values inside array are getting into strings and then the comparison is happening
+
+ages.sort(function (a, b) {
+  return a === b ? 0 : a > b ? 1 : -1;
+});
+
+console.log("age with default sorting", ages);
+
+// splice() method ~ deletes elements frm array, add an element to the array also modify the element in an array
+
+// splice(start, deleteCount, item ,item1, item2)
+
+// start ~ it is the 0 based index from where you want to change the array
+// deleteCount is the integer number that will indicate how many elements you want to delete from this array starting from the start position
+
+// the elements passed after deletecount are the elements supposed to be added beginning from the start index
+
+// splice always returns an array containing deleted elements
+// if no item is deleted then empty array will be returned
+
+const names = ["aplha", "bravo", "charlie", "delta"];
+console.log(names);
+console.log(names.splice(0, 1)); // aplha will be reutrned as it is getting deleted
+console.log(names);
+names.splice(0, 0, "john", "calvalry");
+console.log(names);
+
+// splice() mutates the array ,slice () doesn't
