@@ -414,3 +414,105 @@ const customerFullName = customers.map((customer) => {
 });
 
 const updatesList = console.log(customerFullName);
+
+// reduce method
+
+// test example ~ find the avg age of the ppl purchased book
+
+// in simpler terms reduce method is used to reduce the value of arrays elements to the single value
+
+// like filter used test call back function
+// map took transformation call back function
+// syntax for reduce method it takes two argument -> one call back function and one optional initial value argument
+
+// a reducer function which is also called as callback function to be called on each element of the array
+
+// arr1.reduce(reducer(accumulator, currentValue, index, array){
+// }, initialValue);
+
+// accumulator value is initalised with the initial value passed as 2nd argument
+// accumulator accumulates reducers return value
+// what is return value of reducer ?
+// reducer fucntion returns the operation we performed on accumulator and currentvalue
+
+//example
+
+const arr = [1, 2, 3, 4];
+//find summation usin reduce method
+
+const result = arr.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log("result of summation " + result);
+let count = 0;
+// find the avg age of the customer who have purchased the book
+const totalAge = customers.reduce((accumulator, customer) => {
+  if (customer.purchased.includes("Book")) {
+    accumulator = accumulator + customer.age;
+    count++;
+  }
+  return accumulator;
+}, 0);
+const myAvg = count > 0 ? totalAge / count : 0;
+console.log(
+  "average age of customers who have purchased book ",
+  Math.floor(myAvg)
+);
+
+// some ~ checks if specified condition is atleast met for even one element or it returns true even if one element from the array met  specified condition
+
+// arr.some((Element,index,array) =>{
+
+// })
+
+// problem to solve using some method, find do we have a young customer (age less than 10 years) ?
+
+const hasYoung = customers.some((customer) => {
+  return customer.age < 10;
+});
+console.log(hasYoung);
+
+// every ~ opposite of some, returns true only if every elements of the array satisfies the condition
+
+// check if every customer is married
+const isAllMarried = customers.every((customer) => {
+  return customer.married;
+});
+console.log("is all married in the customer ", isAllMarried);
+
+// find ~ find the younges customer
+const foundYoungCustomer = customers.find((customers) => {
+  return customers.age < 10;
+});
+console.log("is there any young customer", foundYoungCustomer.f_name);
+// find method returns null if it doesn't find anything
+// findIndex() method returns index at which the element is found
+
+// array method chaining ~ used to solve more complex problem
+
+// use case: Get the total amount spent by married customers
+
+// reduce() ~ method to get single value of total amount
+// filter() ~ method to filter out only married customers
+
+// find all the married customers
+const totalExpense = customers
+  .filter((customer) => {
+    return customer.married;
+  })
+  .reduce((accumulator, customer) => {
+    return accumulator + customer.expense;
+  }, 0);
+
+console.log("total expense by married ppl ", totalExpense);
+
+// forEach ~ applied on every element of array, does not return anything the buisness logic has to be inside the forEach
+{
+  const arr = [1, 2, 3, 4, 4];
+  sum = 0;
+  arr.forEach((x) => {
+    sum += x;
+  });
+  console.log(sum);
+}
