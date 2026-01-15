@@ -71,3 +71,39 @@ console.log("using query selector to get h1 ", hOne);
 // 3. getElementByTagName(tagName);
 // 4. querySelector(cssSelector);
 // 4. querySelectorAll(cssSelector);
+
+//Mini Project -1 : highlighter App
+
+function highlightText() {
+  //   console.log("checking working of function ");
+
+  let elements = document.querySelectorAll("p.info");
+  elements.forEach((element) => {
+    // element.style.backgroundColor = "#ACC8E5";
+    element.style.color = "#FB607F";
+  });
+}
+
+function filterList() {
+  let inputElem = document.getElementById("searchInput");
+  const input = inputElem.value;
+  const items = document.querySelectorAll("ul#itemList li");
+
+  items.forEach((item) => {
+    //     item.style.color = item.innerText
+    //       .toLowerCase()
+    //       .includes(input.toLowerCase())
+    //       ? "green"
+    //       : "";
+    //   }
+    // the above one is for changing the background color if the input matches any item in the list
+
+    // what if we want only the searched item to be visible
+
+    item.style.display = item.innerText
+      .toLowerCase()
+      .includes(input.toLowerCase())
+      ? "block"
+      : " none";
+  });
+}
