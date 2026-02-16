@@ -1,0 +1,19 @@
+/* index.css */
+
+.answer {
+  display: none; /* Hide by default */
+  padding: 10px 0;
+}
+
+.answer.show {
+  display: block; /* Show when toggled */
+}
+
+.question {
+  cursor: pointer;
+  font-weight: bold;
+  background: #eee;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 15px;
+}
