@@ -73,14 +73,14 @@ console.log(0 == false); // ideally the output should not be there as we compari
 // so == is loosly equality  operator
 // this loosly eqaulity opeator automatically converts or coerced the differnt data tyes operands to nearest possible similar data type
 
-console.log(3 == "3"); // ideally this should not generate the output as one side is integer and the other side is string
+console.log("loose check", 3 == "3"); // ideally this should not generate the output as one side is integer and the other side is string
 
 // so we use strict equality, instead of two equal we use three equal
 
 // it check if both the side of the equality operator, the operands are of similar data type or not
 // if they are not of similar data types then it does not evaluate it
 
-console.log(3 === "3");
+console.log("strict check ", 3 === "3");
 // if the operands are of different data types the strict equality operator straight away gives false
 // if both the operands are null or undefine it will return true
 
