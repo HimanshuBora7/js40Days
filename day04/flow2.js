@@ -53,3 +53,39 @@ for (let i = 0; i < 6; i++) {
 // do {
 //   code
 //  } while(condition)
+
+//      *
+//     **
+//    ***
+//   ****
+//  *****
+// ******
+
+//printing this pattern using for loop
+console.log("printing new pattern");
+
+for (let i = 0; i <= 4; i++) {
+  let x = "";
+  for (let j = 0; j <= 4; j++) {
+    if (i + j >= 4) {
+      x += "*";
+    } else {
+      x += " ";
+    }
+  }
+  console.log(x);
+}
+
+// why we used break in switch case as if one statement gets true anywhere the below statements will also execute themselves
+
+let aircraft = "tejas";
+
+switch (aircraft) {
+  case "f16":
+    console.log("rejected");
+  case "tejas":
+    console.log("accepted");
+    break;
+  case "f16":
+    console.log("rejected");
+}

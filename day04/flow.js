@@ -56,5 +56,5 @@ switch (name1) {
   default:
     console.log("nothing was entered");
 }
-// ternary operator ? :
+// ternary operator ?  :
 // if we have single if else
